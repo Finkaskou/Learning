@@ -7,6 +7,6 @@ cat id_rsa.pub > authorized_keys
 for i in $(sed '1,2d;$d' /etc/ansible/inventory)
 do 
 	ssh -o "StrictHostKeyChecking no" root@${i} -c "mkdir .ssh"
-	#scp ~/.ssh/authorized_keys root@${i}:~/.ssh
-	ssh-copy-id -i ~/.ssh/authorized_keys root@${i}
+	scp ~/.ssh/authorized_keys root@${i}:~/.ssh
+	ssh-copy-id -i ~/.ssh/id_rsa.pub root@${i}
 done
