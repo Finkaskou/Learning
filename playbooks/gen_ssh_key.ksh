@@ -6,6 +6,6 @@ cat id_rsa.pub > authorized_keys
 
 for i in $(sed '1,2d;$d' /etc/ansible/inventory)
 do 
-	scp ~/.ssh/authorized_keys root@${i}:~/.ssh
+	scp ~/.ssh/authorized_keys root@${i}:~/.ssh/authorized_keys
 	ssh-copy-id -i ~/.ssh/id_rsa.pub root@${i}
 done
