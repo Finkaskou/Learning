@@ -6,8 +6,14 @@ cat id_rsa.pub > authorized_keys
 
 for i in $(sed '1,2d;$d' /etc/ansible/inventory)
 do 
+	echo "Serveur : ${i}"
+	echo ""
+	echo ""
 	scp -o StrictHostKeyChecking=no ~/.ssh/authorized_keys root@${i}:~/.ssh/authorized_keys
 	ssh-copy-id -i ~/.ssh/id_rsa.pub root@${i}
+	echo ""
+	echo ""
+
 done
 
 ansible -i /etc/ansible/inventory -m ping all
