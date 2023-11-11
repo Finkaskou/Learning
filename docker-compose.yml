@@ -5,11 +5,6 @@ services:
       context: .
       dockerfile: ./server.Dockerfile
 
-  app2:
-    build:
-      context: .
-      dockerfile: ./server.Dockerfile
-
   lb:
     build:
       context: .
