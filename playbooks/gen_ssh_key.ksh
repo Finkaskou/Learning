@@ -9,3 +9,5 @@ do
 	scp -o StrictHostKeyChecking=no ~/.ssh/authorized_keys root@${i}:~/.ssh/authorized_keys
 	ssh-copy-id -i ~/.ssh/id_rsa.pub root@${i}
 done
+
+ansible -i /etc/ansible/inventory -m ping all
