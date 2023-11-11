@@ -1,6 +1,21 @@
 version: '3'
 services:
-  app:
+  master:
+    build:
+      context: .
+      dockerfile: ./master.Dockerfile
+    working_dir: /root/playbooks
+    volumes:
+      - /home/ansible/GIT/Learning/playbooks:/root/playbooks
+      - /home/ansible/GIT/Learning/config:/etc/ansible
+    command: tail -f /dev/null
+    
+  web:
+    build:
+      context: .
+      dockerfile: ./server.Dockerfile
+
+  db:
     build:
       context: .
       dockerfile: ./server.Dockerfile
