@@ -31,7 +31,7 @@
 
     - name: "Copy ssh key"
       shell: |
-        for i in $(sed '1d;$d' /etc/ansible/inventory)
+        for i in $(cat /etc/ansible/list_server.txt)
         do 
           sshpass -p "{{ root_password }}" scp -o StrictHostKeyChecking=no ~/.ssh/authorized_keys root@${i}:~/.ssh/authorized_keys
           sshpass -p "{{ root_password }}" ssh-copy-id -i ~/.ssh/id_rsa.pub root@${i}
