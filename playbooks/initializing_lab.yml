@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  tasks:
+    - name: "Create .ssh directory"
+      file:
+        path: /root/.ssh
+        owner: root
+        group: root
+        mode: 0755
+      register: path_ssh
+      
+
+    - name: "Generate ssh key"
+      openssh_keypair:
+        path: {{ path_ssh }}
