@@ -14,4 +14,4 @@
       openssh_keypair:
         path: {{ item.path }}
       with_items:
-        - {{ path_ssh }}
+        - {{ path_ssh.files }}
