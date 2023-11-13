@@ -4,7 +4,7 @@
 #ssh-keygen -b 2048 -t rsa -f /root/.ssh/id_rsa -q -N ""
 #cat id_rsa.pub > authorized_keys
 
-for i in $(sed '1d' /etc/ansible/inventory)
+for i in $(sed '1d' /etc/ansible/list_server.txt)
 do 
 	echo "Serveur : ${i}"
 	scp -o StrictHostKeyChecking=no ~/.ssh/authorized_keys root@${i}:~/.ssh/authorized_keys
