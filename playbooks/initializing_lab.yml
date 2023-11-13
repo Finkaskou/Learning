@@ -2,7 +2,7 @@
 - hosts: localhost
   gather_facts: false
   vars_files:
-    - /etc/ansible/config/password_root.yml
+    - /etc/ansible/password_root.yml
   tasks:
     - name: "Create .ssh directory"
       file:
