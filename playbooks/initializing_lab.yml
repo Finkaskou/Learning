@@ -14,8 +14,8 @@
       debug:
         var: __path_ssh
 
-#    - name: "Generate ssh key"
-#      openssh_keypair:
-#        path: "{{ item.path }}"
-#      with_items:
-#        - "{{ __path_ssh.files }}"
+    - name: "Generate ssh key"
+      openssh_keypair:
+        path: "{{ item.path }}"
+      with_items:
+        - "{{ __path_ssh }}"
