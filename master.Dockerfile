@@ -1,4 +1,4 @@
 FROM geerlingguy/docker-debian10-ansible
 
 RUN apt-get update && apt-get install -y vim python net-tools telnet curl ssh 
-RUN apt install -y sshpass
+RUN apt-get -y install sshpass
