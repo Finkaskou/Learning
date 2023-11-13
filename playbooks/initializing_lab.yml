@@ -13,10 +13,6 @@
         mode: 0755
       register: __path_ssh
 
-    - name: Debug variable
-      debug:
-        var: __path_ssh
-
     - name: "Generate ssh key"
       openssh_keypair:
         path: "{{ item.path }}/id_rsa"
