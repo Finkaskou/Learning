@@ -12,6 +12,6 @@
 
     - name: "Generate ssh key"
       openssh_keypair:
-        path: {{ item.path }}
+        path: "{{ item.path }}"
       with_items:
-        - {{ path_ssh.files }}
+        - "{{ path_ssh.files }}"
