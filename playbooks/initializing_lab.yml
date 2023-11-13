@@ -19,3 +19,21 @@
         path: "{{ item.path }}/id_rsa"
       with_items:
         - "{{ __path_ssh }}"
+
+    - name: "Create authorized_keys"
+      copy:
+        src: "{{ item.path }}/id_rsa.pub"
+        dest: "{{ item.path }}/authorized_keys"
+        owner: root
+        group: root
+        mode: 0644
+      with_items:
+        - "{{ __path_ssh }}"
+
+    - name: "Copy ssh key"
+      shell: |
+        for i in $(sed '1d;$d' /etc/ansible/inventory)
+        do 
+          scp -o StrictHostKeyChecking=no ~/.ssh/authorized_keys root@${i}:~/.ssh/authorized_keys
+          ssh-copy-id -i ~/.ssh/id_rsa.pub root@${i}
+        done
