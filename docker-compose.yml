@@ -14,8 +14,8 @@ services:
     build:
       context: .
       dockerfile: ./server.Dockerfile
-      deploy:
-        replicas: 2
+      args:
+        buildno: 2
 
   db:
     build:
