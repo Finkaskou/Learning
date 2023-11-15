@@ -1,11 +1,9 @@
 ---
 - hosts: localhost
+  vars:
+    pvfe: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
+    h_a_p: "{{ ansible_host }} : {{ pvfe }}"
   tasks:
-    - name:
-      set_fact:
-        pvfe: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
-        h_a_p: "{{ ansible_host }} : {{ pvfe }}"
-
     - name: "test gen password"
       debug:
         msg: "{{ h_a_p }}"
