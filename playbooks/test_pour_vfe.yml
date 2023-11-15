@@ -21,8 +21,8 @@
     - name: "replace password"
       replace:
         path: /root/fic_test_mdp.txt
-        after: "    <user username="vfe" password="
-        before: " roles="vfe_front"/>"
-        regexp: "vfe"
-        replace: "{{ pvfe }}"
+        after: '    <user username="vfe" password='
+        before: ' roles="vfe_front"/>'
+        regexp: '"vfe"'
+        replace: '"{{ pvfe }}"'
         backup: yes
