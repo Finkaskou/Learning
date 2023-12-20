@@ -1,8 +1,5 @@
 ---
 - hosts: all
-#  vars:
-#    pvfe: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
-#    h_a_p: "{{ ansible_host }} : {{ pvfe }}"
   tasks:
     - name: "Set fact"
       set_fact:
@@ -12,23 +9,6 @@
     - name: "test gen password"
       debug:
         msg: "{{ h_a_p }}"
-
-#   - name: "copie fichier test"
-#     copy: 
-#       src: /etc/ansible/fic_test_mdp.txt
-#       dest: /root/fic_test_mdp.txt
-#       owner: root
-#       group: root
-#       mode: 0775
-
-#    - name: "replace password"
-#      replace:
-#        path: /root/fic_test_mdp.txt
-#        after: '    <user username="vfe" password='
-#        before: ' roles="vfe_front"/>'
-#        regexp: '"vfe"'
-#        replace: '"{{ pvfe }}"'
-#        backup: yes
 
     - name:
       add_host:
