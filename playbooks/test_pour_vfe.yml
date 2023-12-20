@@ -1,9 +1,14 @@
 ---
 - hosts: all
-  vars:
-    pvfe: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
-    h_a_p: "{{ ansible_host }} : {{ pvfe }}"
+#  vars:
+#    pvfe: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
+#    h_a_p: "{{ ansible_host }} : {{ pvfe }}"
   tasks:
+    - name: "Set fact"
+      set_fact:
+        pvfe: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
+        h_a_p: "{{ ansible_host }} : {{ pvfe }}"
+
     - name: "test gen password"
       debug:
         msg: "{{ h_a_p }}"
@@ -29,9 +34,7 @@
       add_host:
         name: "TEST_ADD_HOST"
         secret: "{{ h_a_p }}"
-        groups: list_mdp
 
     - name:
       debug:
         msg: "{{ hostvars['TEST_ADD_HOST']['secret'] }}"
-      with_items: "{{ groups['list_mdp'] }}"
