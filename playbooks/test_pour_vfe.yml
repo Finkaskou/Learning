@@ -2,7 +2,7 @@
 - hosts: all
   vars:
     generated_passwords: []
-    
+
   tasks:
     - name: "Set fact"
       set_fact:
@@ -15,6 +15,10 @@
     - name: "test gen password"
       debug:
         msg: "{{ h_a_p }}"
+
+    - name: "test 2eme methode"
+      debug:
+        msg: "{{ generated_passwords }}"
 
 #    - name:
 #      add_host:
