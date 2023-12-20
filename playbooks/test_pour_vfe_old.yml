@@ -4,12 +4,20 @@
 #    pvfe: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
 #    h_a_p: "{{ ansible_host }} : {{ pvfe }}"
   tasks:
-    - name: "Set fact"
+    - name: "Set fact 1"
+      Password: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
+
+    - name: "Set fact 2"
       set_fact:
-        h_a_p: "{{ ansible_host }} : {{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
+        h_a_p: "{{ ansible_host }} : {{ Password }}"
       with_items: "{{ ansible_play_hosts }}"
 
-    - name: "test gen password"
+
+    - name: "Unique password"
+      debug:
+        msg: "{{ Password }}"
+
+    - name: "All password"
       debug:
         msg: "{{ h_a_p }}"
 
