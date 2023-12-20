@@ -3,8 +3,7 @@
   tasks:
     - name: "Set fact"
       set_fact:
-        pvfe: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
-        h_a_p: "{{ ansible_host }} : {{ pvfe }}"
+        h_a_p: "{{ ansible_host }} : {{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
 
     - name: "test gen password"
       debug:
