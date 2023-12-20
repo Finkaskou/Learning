@@ -1,5 +1,8 @@
 ---
 - hosts: all
+  vars:
+    generated_passwords: []
+    
   tasks:
     - name: "Set fact"
       set_fact:
