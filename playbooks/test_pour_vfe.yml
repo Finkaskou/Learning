@@ -30,6 +30,6 @@
         name: "TEST_ADD_HOST"
         secret: "{{ h_a_p }}"
 
-- name:
-  debug:
-    msg: "{{ hostvars['TEST_ADD_HOST']['secret'] }}"
+    - name:
+      debug:
+        msg: "{{ hostvars['TEST_ADD_HOST']['secret'] }}"
