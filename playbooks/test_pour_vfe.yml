@@ -11,9 +11,11 @@
 
     - name:
       add_host:
-        name: "TEST_ADD_HOST"
+        name: "TEST_ADD_HOST_{{ ansible_host }}"
         secret: "{{ h_a_p }}"
+        groups: generated_servers
 
     - name:
       debug:
-        msg: "{{ hostvars['TEST_ADD_HOST']['secret'] }}"
+        msg: "{{ hostvars['TEST_ADD_HOST_{{ ansible_host }}']['secret'] }}"
+      with_items: "{{ groups['generated_servers'] }}"
