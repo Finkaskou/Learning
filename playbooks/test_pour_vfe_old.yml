@@ -7,6 +7,7 @@
     - name: "Set fact"
       set_fact:
         h_a_p: "{{ ansible_host }} : {{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
+      with_items: "{{ ansible_play_hosts }}"
 
     - name: "test gen password"
       debug:
@@ -28,12 +29,3 @@
 #        regexp: '"vfe"'
 #        replace: '"{{ pvfe }}"'
 #        backup: yes
-
-    - name:
-      add_host:
-        name: "TEST_ADD_HOST"
-        secret: "{{ h_a_p }}"
-
-    - name:
-      debug:
-        msg: "{{ hostvars['TEST_ADD_HOST']['secret'] }}"
