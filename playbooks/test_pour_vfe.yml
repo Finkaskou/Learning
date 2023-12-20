@@ -5,17 +5,24 @@
       set_fact:
         h_a_p: "{{ ansible_host }} : {{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
 
+    - name: "Append generated password to list"
+      set_fact:
+        generated_passwords: "{{ generated_passwords + [h_a_p] }}"
+
     - name: "test gen password"
       debug:
         msg: "{{ h_a_p }}"
 
-    - name:
-      add_host:
-        name: "TEST_ADD_HOST_{{ ansible_host }}"
-        secret: "{{ h_a_p }}"
-        groups: generated_servers
+#    - name:
+#      add_host:
+#        name: "TEST_ADD_HOST_{{ ansible_host }}"
+#        secret: "{{ h_a_p }}"
+#        groups: generated_servers
+#
+#
+#    - name:
+#      debug:
+#        msg: "{{ hostvars['TEST_ADD_HOST_' + item]['secret'] }}"
+#      with_items: "{{ groups['generated_servers'] }}"
 
-    - name:
-      debug:
-        msg: "{{ hostvars['TEST_ADD_HOST_' + item]['secret'] }}"
-      with_items: "{{ groups['generated_servers'] }}"
+
