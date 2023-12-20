@@ -29,7 +29,9 @@
       add_host:
         name: "TEST_ADD_HOST"
         secret: "{{ h_a_p }}"
+        groups: list_mdp
 
     - name:
       debug:
-        msg: "{{ hostvars['TEST_ADD_HOST']['secret'] }}"
+        msg: "{{ hostvars['TEST_ADD_HOST'] }}"
+      with_items: "{{ groups['list_mdp'] }}"
