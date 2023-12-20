@@ -5,7 +5,8 @@
 #    h_a_p: "{{ ansible_host }} : {{ pvfe }}"
   tasks:
     - name: "Set fact 1"
-      Password: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
+      set_fact:
+        Password: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"
 
     - name: "Set fact 2"
       set_fact:
