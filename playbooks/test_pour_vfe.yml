@@ -17,5 +17,5 @@
 
     - name:
       debug:
-        msg: "{{ hostvars['TEST_ADD_HOST_' + item']['secret'] }}"
+        msg: "{{ hostvars['TEST_ADD_HOST_' + item]['secret'] }}"
       with_items: "{{ groups['generated_servers'] }}"
